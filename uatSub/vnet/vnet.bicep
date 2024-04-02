@@ -2,6 +2,11 @@ param location string = resourceGroup().location
 param region string = 'uksouth'
 param environment string = 'uat'
 param prefix string = 'kf'
+param tagValues object = {
+  Company: 'NSM UK'
+  Department: 'Infrastructure'
+  Environment: '${environment}'
+}
 
 var subnets = [
   {
@@ -26,11 +31,7 @@ var subnets = [
 resource vnet 'Microsoft.Network/virtualNetworks@2021-08-01' = {
   name: 'vnet-${prefix}-${environment}-${region}-001'
   location: location
-  tags:  {
-   Company: 'KingFisher'
-   Department: 'Infrastructure'
-   Environment: '${environment}'
-  }
+  tags:  tagValues
   properties: {
     addressSpace: {
       addressPrefixes: [
@@ -65,11 +66,7 @@ var nsgs = [
 resource nsg 'Microsoft.Network/networkSecurityGroups@2021-05-01' = [for nsgs in nsgs: {
   name: nsgs.name
   location: location
-  tags: {
-    Company: 'KingFisher'
-    Department: 'Infrastructure'
-    Environment: '${environment}'
-  }
+  tags: tagValues
   properties: {
     securityRules: []
   }   
