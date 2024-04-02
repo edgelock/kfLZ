@@ -1,9 +1,9 @@
 param location string = resourceGroup().location
 param region string = 'uksouth'
-param environment string = 'dev'
+param environment string = 'prd'
 param prefix string = 'kf'
 param tagValues object = {
-  Company: 'NSM UK'
+  Company: 'KingFisher'
   Department: 'Infrastructure'
   Environment: '${environment}'
 }
@@ -11,19 +11,19 @@ param tagValues object = {
 var subnets = [
   {
     name: 'snet-${prefix}-${environment}-${region}-app-001'
-    subnetPrefix: '10.150.12.0/27'
+    subnetPrefix: '10.150.8.0/27'
   }
   {
     name: 'snet-${prefix}-${environment}-${region}-sql-001'
-    subnetPrefix: '10.150.12.32/27'
+    subnetPrefix: '10.150.8.32/27'
   }
   {
     name: 'PESubnet'
-    subnetPrefix: '10.150.12.64/27'
+    subnetPrefix: '10.150.8.64/27'
   }
   {
     name: 'snet-${prefix}-${environment}-${region}-dmz-001'
-    subnetPrefix: '10.150.12.96/27'
+    subnetPrefix: '10.150.8.96/27'
   }
 ]
 
@@ -35,7 +35,7 @@ resource vnet 'Microsoft.Network/virtualNetworks@2021-08-01' = {
   properties: {
     addressSpace: {
       addressPrefixes: [
-        '10.150.12.0/22'
+        '10.150.8.0/22'
       ]
     }
     subnets: [for subnet in subnets: {
