@@ -1,6 +1,6 @@
 param location string = resourceGroup().location
 param region string = 'uksouth'
-param environment string = 'prd'
+param environment string = 'production'
 param prefix string = 'kf'
 param tagValues object = {
   Company: 'NSM UK'
