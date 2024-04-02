@@ -6,6 +6,7 @@ param tagValues object = {
   Company: 'NSM UK'
   Department: 'Infrastructure'
   Environment: '${environment}'
+  Role: 'Network'
 }
 
 var subnets = [
@@ -55,7 +56,7 @@ var nsgs = [
     name: 'nsg-${prefix}-${environment}-${region}-sql-001'
   }
   {
-    name: 'nsg-PESubnet'
+    name: 'nsg-PESubnet-001'
   }
   {
     name: 'nsg-${prefix}-${environment}-${region}-dmz-001'

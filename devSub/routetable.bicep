@@ -3,16 +3,17 @@ param region string = 'uksouth'
 param environment string = 'dev'
 param prefix string = 'kf'
 param tagValues object = {
-  Company: 'NSM UK'
+  Company: 'Kingfisher'
   Department: 'Infrastructure'
   Environment: '${environment}'
+  Role: 'Network'
 }
 
 param rts array = [
-  'rt-${prefix}-${environment}-${region}-app'
-  'rt-${prefix}-${environment}-${region}-sql'
-  'rt-PESubnet'
-  'rt-${prefix}-${environment}-${region}-dmz'
+  'rt-${prefix}-${environment}-${region}-app-001'
+  'rt-${prefix}-${environment}-${region}-sql-001'
+  'rt-PESubnet-001'
+  'rt-${prefix}-${environment}-${region}-dmz-001'
 ]
 
 

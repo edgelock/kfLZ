@@ -3,17 +3,28 @@ param region string = 'uksouth'
 param environment string = 'uat'
 param prefix string = 'kf'
 param tagValues object = {
-  Company: 'NSM UK'
+  Company: 'Kingfisher'
   Department: 'Infrastructure'
   Environment: '${environment}'
+  Role: 'Network'
 }
-resource qause2netappsn01rt 'Microsoft.Network/routeTables@2022-09-01' = {
-  name: 'vnet-${prefix}-${environment}-${region}-001'
+
+param rts array = [
+  'rt-${prefix}-${environment}-${region}-app-001'
+  'rt-${prefix}-${environment}-${region}-sql-001'
+  'rt-PESubnet-001'
+  'rt-${prefix}-${environment}-${region}-dmz-001'
+]
+
+
+resource listOfRt 'Microsoft.Network/routeTables@2023-09-01' = [for rt in rts:{
+  name: rt
   location: location
   tags: tagValues
   properties: {
     routes: [
-
+      
     ]
   }
-}
+} ]
+
