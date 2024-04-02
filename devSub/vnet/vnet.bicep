@@ -1,27 +1,35 @@
 param location string = resourceGroup().location
-param tenantId string = '2fb36de5-296a-43c7-b5d2-ae73931f0aa3'
-param region string = 'eus2'
+param region string = 'uksouth'
 param environment string = 'dev'
-param suffix string = 'data'
+param prefix string = 'kf'
+
 var subnets = [
   {
-    name: 'snet-${region}-${environment}-${suffix}-pe'
-    subnetPrefix: '10.5.8.0/27'
+    name: 'snet-${prefix}-${environment}-${region}-app-001'
+    subnetPrefix: '10.150.12.0/27'
   }
   {
-    name: 'snet-${region}-${environment}-${suffix}-mgmt'
-    subnetPrefix: '10.5.8.32/27'
+    name: 'snet-${prefix}-${environment}-${region}-sql-001'
+    subnetPrefix: '10.150.12.32/27'
+  }
+  {
+    name: 'PESubnet'
+    subnetPrefix: '10.150.12.64/27'
+  }
+  {
+    name: 'snet-${prefix}-${environment}-${region}-dmz-001'
+    subnetPrefix: '10.150.12.96/27'
   }
 ]
 
 
 resource vnet 'Microsoft.Network/virtualNetworks@2021-08-01' = {
-  name: 'vnet-${region}-${environment}-${suffix}'
+  name: 'vnet-${prefix}-${environment}-${region}-001'
   location: location
   properties: {
     addressSpace: {
       addressPrefixes: [
-        '10.5.8.0/24'
+        '10.150.12.0/22'
       ]
     }
     subnets: [for subnet in subnets: {
@@ -35,10 +43,16 @@ resource vnet 'Microsoft.Network/virtualNetworks@2021-08-01' = {
 
 var nsgs = [
   {
-    name: 'nsg-${region}-${environment}-${suffix}-pe'
+    name: 'nsg-${prefix}-${environment}-${region}-app-001'
   }
   {
-    name: 'nsg-${region}-${environment}-${suffix}-mgmt'
+    name: 'nsg-${prefix}-${environment}-${region}-sql-001'
+  }
+  {
+    name: 'nsg-PESubnet'
+  }
+  {
+    name: 'nsg-${prefix}-${environment}-${region}-dmz-001'
   }
 
 ]
