@@ -1,7 +1,7 @@
 param location string = resourceGroup().location
 param region string = 'uksouth'
 param environment string = 'platform'
-param prefix string = 'kf'
+param prefix string = 'nsmuk'
 param tagValues object = {
   Company: 'Kingfisher'
   Department: 'Infrastructure'
@@ -10,8 +10,8 @@ param tagValues object = {
 }
 
 param rts array = [
-  'rt-${prefix}-${environment}-${region}-app-001'
-  'rt-${prefix}-${environment}-${region}-sql-001'
+  'rt-${prefix}-${environment}-${region}-identity-001'
+  'rt-${prefix}-${environment}-${region}-infra-001'
   'rt-PESubnet-001'
 ]
 

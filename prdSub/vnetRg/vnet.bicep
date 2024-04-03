@@ -3,7 +3,7 @@ param region string = 'uksouth'
 param environment string = 'production'
 param prefix string = 'kf'
 param tagValues object = {
-  Company: 'NSM UK'
+  Company: 'Kingfisher'
   Department: 'Infrastructure'
   Environment: '${environment}'
 }
