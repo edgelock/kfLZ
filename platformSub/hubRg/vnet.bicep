@@ -2,11 +2,14 @@ param location string = resourceGroup().location
 param region string = 'uksouth'
 param environment string = 'hub'
 param prefix string = 'nsmuk'
+param dateTime string = utcNow('d')
 param tagValues object = {
   Company: 'NSM UK'
   Department: 'Infrastructure'
   Environment: '${environment}'
   Role: 'Network'
+  CreationDate: dateTime
+
 }
 
 var subnets = [
