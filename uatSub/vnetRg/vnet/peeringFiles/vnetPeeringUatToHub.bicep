@@ -1,5 +1,5 @@
 //Peer from prd to hub
-param vNetName string = 'vnet-kf-dev-uksouth-001'
+param vNetName string = 'vnet-kf-uat-uksouth-001'
 param remoteVNetName string = 'vnet-nsmuk-hub-uksouth-001'
 param remoteVNetID string = '/subscriptions/19022fa5-e4d8-4433-bd3c-503455903ca2/resourceGroups/rg-nsmuk-hub-network-uksouth-001/providers/Microsoft.Network/virtualNetworks/vnet-nsmuk-hub-uksouth-001'
 param allowGatewayTransit bool = true
