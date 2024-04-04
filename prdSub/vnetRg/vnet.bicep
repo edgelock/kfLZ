@@ -1,11 +1,12 @@
 param location string = resourceGroup().location
 param region string = 'uksouth'
-param environment string = 'production'
+param environment string = 'prod'
 param prefix string = 'kf'
 param tagValues object = {
   Company: 'Kingfisher'
   Department: 'Infrastructure'
   Environment: '${environment}'
+  Role: 'Network'
 }
 
 var subnets = [
@@ -55,7 +56,7 @@ var nsgs = [
     name: 'nsg-${prefix}-${environment}-${region}-sql-001'
   }
   {
-    name: 'nsg-PESubnet'
+    name: 'nsg-PESubnet-001'
   }
   {
     name: 'nsg-${prefix}-${environment}-${region}-dmz-001'

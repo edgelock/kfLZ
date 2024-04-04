@@ -1,12 +1,14 @@
 param location string = resourceGroup().location
 param region string = 'uksouth'
-param environment string = 'production'
+param environment string = 'prod'
 param prefix string = 'kf'
+param dateTime string = utcNow('d')
 param tagValues object = {
   Company: 'Kingfisher'
   Department: 'Infrastructure'
   Environment: '${environment}'
   Role: 'Network'
+  CreationDate: dateTime
 }
 
 param rts array = [
