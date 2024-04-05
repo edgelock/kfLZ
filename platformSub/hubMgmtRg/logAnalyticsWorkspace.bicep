@@ -10,7 +10,7 @@ param tagValues object = {
   Role: 'Network'
   CreationDate: dateTime
 }
-param logAnalyticsWorkspaceName string = 'rt-${prefix}-${environment}-${region}-001'
+param logAnalyticsWorkspaceName string = 'law-${prefix}-${environment}-${region}-001'
 
 @minValue(30)
 @maxValue(730)
