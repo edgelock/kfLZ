@@ -1,13 +1,13 @@
 param location string = resourceGroup().location
 param region string = 'uksouth'
-param environment string = 'platform'
+param environment string = 'hub'
 param prefix string = 'nsmuk'
 param dateTime string = utcNow('d')
 param tagValues object = {
   Company: 'NSM UK'
   Department: 'Infrastructure'
   Environment: '${environment}'
-  Role: 'Network'
+  Role: 'Management'
   CreationDate: dateTime
 }
 param logAnalyticsWorkspaceName string = 'law-${prefix}-${environment}-${region}-001'

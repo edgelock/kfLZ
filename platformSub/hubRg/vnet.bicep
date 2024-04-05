@@ -29,6 +29,14 @@ var subnets = [
     name: 'AzureBastionSubnet'
     subnetPrefix: '10.150.0.64/27'
   }
+  {
+    name: 'GatewaySubnet'
+    subnetPrefix: '10.150.1.32/27'
+  }
+  {
+    name: 'AzureFirewallSubnet'
+    subnetPrefix: '10.150.2.0/26'
+  }
 ]
 
 
