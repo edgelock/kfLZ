@@ -53,10 +53,10 @@ resource vnet 'Microsoft.Network/virtualNetworks@2021-08-01' = {
 
 var nsgs = [
   {
-    name: 'nsg-${prefix}-${environment}-${region}-app-001'
+    name: 'nsg-${prefix}-${environment}-${region}-external-001'
   }
   {
-    name: 'nsg-${prefix}-${environment}-${region}-sql-001'
+    name: 'nsg-${prefix}-${environment}-${region}-internal-001'
   }
   {
     name: 'nsg-PESubnet-001'
