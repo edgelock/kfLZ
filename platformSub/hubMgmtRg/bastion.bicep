@@ -13,7 +13,7 @@ param tagValues object = {
 
 }
 
-param virtualNetworkId string = '/subscriptions/d8b855c8-2412-4cab-9ce3-927c4dab5523/resourceGroups/prdcaearg01/providers/Microsoft.Network/virtualNetworks/hubcaeanet01'
+param virtualNetworkId string = '/subscriptions/19022fa5-e4d8-4433-bd3c-503455903ca2/resourceGroups/rg-nsmuk-hub-network-uksouth-001/providers/Microsoft.Network/virtualNetworks/vnet-nsmuk-hub-uksouth-001'
 param subnetName string = 'AzureBastionSubnet'
 
 
@@ -24,12 +24,13 @@ param publicIpName string = 'pip-${prefix}-${environment}-${region}-001'
 param bastionHostName string = 'BastionHost'
 
 @description('The ID of LAW')
-param logAwsID string = '/subscriptions/d8b855c8-2412-4cab-9ce3-927c4dab5523/resourcegroups/prdcaearg01/providers/microsoft.operationalinsights/workspaces/prdcaealaw01'
+param logAwsID string = '/subscriptions/19022fa5-e4d8-4433-bd3c-503455903ca2/resourcegroups/rg-nsmuk-hub-mgmt-uksouth-001/providers/microsoft.operationalinsights/workspaces/law-nsmuk-hub-uksouth-001'
 
 
 resource publicIpAddressForBastion 'Microsoft.Network/publicIPAddresses@2022-01-01' = {
   name: publicIpName
   location: location
+  tags: tagValues
   sku: {
     name: 'Standard'
   }
@@ -41,6 +42,7 @@ resource publicIpAddressForBastion 'Microsoft.Network/publicIPAddresses@2022-01-
 resource bastionHost 'Microsoft.Network/bastionHosts@2021-05-01' = {
   name: bastionHostName
   location: location
+  tags: tagValues
   properties: {
     ipConfigurations: [
       {
