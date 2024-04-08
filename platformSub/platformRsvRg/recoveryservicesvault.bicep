@@ -14,10 +14,17 @@ param tagValues object = {
 resource rsv 'Microsoft.RecoveryServices/vaults@2024-01-01' = {
   name: 'rsv-${prefix}-${environment}-${region}-app-001'
   location: location
-  tags: tagValues 
   sku: {
     name: 'Standard'
-    
+  }
+  properties: {
+    publicNetworkAccess: 'Disabled'
+    securitySettings: {
+       softDeleteSettings: {
+         softDeleteRetentionPeriodInDays: '100'
+         enhancedSecurityState: 'AlwaysON'
+       }
+    }
   }
 }
 
