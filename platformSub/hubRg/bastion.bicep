@@ -18,7 +18,7 @@ param subnetName string = 'AzureBastionSubnet'
 
 
 @description('The name of the Bastion public IP address')
-param publicIpName string = 'devcaeabastionpip'
+param publicIpName string = 'pip-${prefix}-${environment}-${region}-001'
 
 @description('The name of the Bastion host')
 param bastionHostName string = 'BastionHost'
