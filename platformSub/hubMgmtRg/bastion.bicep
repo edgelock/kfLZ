@@ -8,7 +8,7 @@ param tagValues object = {
   Company: 'NSM UK'
   Department: 'Infrastructure'
   Environment: '${environment}'
-  Role: 'Network'
+  Role: 'Management'
   CreationDate: dateTime
 
 }
@@ -18,10 +18,10 @@ param subnetName string = 'AzureBastionSubnet'
 
 
 @description('The name of the Bastion public IP address')
-param publicIpName string = 'pip-${prefix}-${environment}-${region}-001'
+param publicIpName string = 'pip-bas-${prefix}-${environment}-${region}-001'
 
 @description('The name of the Bastion host')
-param bastionHostName string = 'BastionHost'
+param bastionHostName string = 'bas-${prefix}-${environment}-${region}-001'
 
 @description('The ID of LAW')
 param logAwsID string = '/subscriptions/19022fa5-e4d8-4433-bd3c-503455903ca2/resourcegroups/rg-nsmuk-hub-mgmt-uksouth-001/providers/microsoft.operationalinsights/workspaces/law-nsmuk-hub-uksouth-001'

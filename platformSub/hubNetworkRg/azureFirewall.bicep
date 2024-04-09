@@ -16,7 +16,7 @@ param virtualNetworkId string = '/subscriptions/19022fa5-e4d8-4433-bd3c-50345590
 param subnetName string = 'AzureFirewallSubnet'
 
 resource firewallPublicIp 'Microsoft.Network/publicIPAddresses@2021-05-01' = {
-  name: 'pip-${prefix}-${environment}-${region}-001'
+  name: 'pip-afw-${prefix}-${environment}-${region}-001'
   location: location
   tags: tagValues
   sku: {
