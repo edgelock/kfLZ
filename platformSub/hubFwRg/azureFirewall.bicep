@@ -4,19 +4,21 @@ param environment string = 'hub'
 param prefix string = 'nsmuk'
 param dateTime string = utcNow('d')
 param tagValues object = {
-  Company: 'Kingfisher'
+  Company: 'NSM UK'
   Department: 'Infrastructure'
   Environment: '${environment}'
   Role: 'Network'
   CreationDate: dateTime
+
 }
 
-param virtualNetworkId string = '/subscriptions/19022fa5-e4d8-4433-bd3c-503455903ca2/resourceGroups/rg-nsmuk-hub-network-uksouth-001'
+param virtualNetworkId string = '/subscriptions/19022fa5-e4d8-4433-bd3c-503455903ca2/resourceGroups/rg-nsmuk-hub-network-uksouth-001/providers/Microsoft.Network/virtualNetworks/vnet-nsmuk-hub-uksouth-001'
 param subnetName string = 'AzureFirewallSubnet'
 
 resource firewallPublicIp 'Microsoft.Network/publicIPAddresses@2021-05-01' = {
-  name: 'hubuse2fwpip01'
+  name: 'pip-${prefix}-${environment}-${region}-001'
   location: location
+  tags: tagValues
   sku: {
     name: 'Standard'
   }
@@ -32,15 +34,15 @@ param azFirewallPolicyID string = '/subscriptions/d8b855c8-2412-4cab-9ce3-927c4d
 resource AzureFirewall 'Microsoft.Network/azureFirewalls@2022-09-01' = {
   name: 'afw-${prefix}-${environment}-${region}-001'
   location: location
-
+  tags: tagValues
   properties: {
     sku: {
       name: 'AZFW_VNet'
-       tier: 'Premium'
+       tier: 'Standard'
     }
     ipConfigurations: [
       {
-        name: 'hubuse2fwconfig01'
+        name: 'config-${prefix}-${environment}-${region}-001'
         properties: {
           subnet: {
             id: '${virtualNetworkId}/subnets/${subnetName}'
