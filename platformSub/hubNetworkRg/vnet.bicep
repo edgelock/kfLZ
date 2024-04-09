@@ -22,7 +22,7 @@ var subnets = [
     subnetPrefix: '10.150.0.32/27'
   }
   {
-    name: 'PESubnet'
+    name: 'snet-${prefix}-${environment}-${region}-PESubnet-001'
     subnetPrefix: '10.150.0.96/27'
   }
   {
@@ -67,7 +67,7 @@ var nsgs = [
     name: 'nsg-${prefix}-${environment}-${region}-internal-001'
   }
   {
-    name: 'nsg-PESubnet-001'
+    name: 'nsg-${prefix}-${environment}-${region}-PESubnet-001'
   }
   {
     name: 'nsg-AzureBastionSubnet-001'
