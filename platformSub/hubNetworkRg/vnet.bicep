@@ -83,3 +83,5 @@ resource nsg 'Microsoft.Network/networkSecurityGroups@2021-05-01' = [for nsgs in
     securityRules: []
   }   
 }]
+
+output subnetId1 string = resourceId('Microsoft.Network/VirtualNetworks/subnets', 'vnet-nsmuk-hub-uksouth-001', 'GatewaySubnet')

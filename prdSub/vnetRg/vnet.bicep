@@ -21,7 +21,7 @@ var subnets = [
     subnetPrefix: '10.150.8.32/27'
   }
   {
-    name: 'PESubnet'
+    name: 'snet-${prefix}-${environment}-${region}-PESubnet-001'
     subnetPrefix: '10.150.8.64/27'
   }
   {
@@ -58,7 +58,7 @@ var nsgs = [
     name: 'nsg-${prefix}-${environment}-${region}-sql-001'
   }
   {
-    name: 'nsg-PESubnet-001'
+    name: 'nsg-${prefix}-${environment}-${region}-PESubnet-001'
   }
   {
     name: 'nsg-${prefix}-${environment}-${region}-dmz-001'
