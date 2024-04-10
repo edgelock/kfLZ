@@ -14,7 +14,7 @@ param tagValues object = {
 param rts array = [
   'rt-${prefix}-${environment}-${region}-identity-001'
   'rt-${prefix}-${environment}-${region}-infra-001'
-  'rt-PESubnet-001'
+  'rt-${prefix}-${environment}-${region}-PESubnet-001'
 ]
 
 
