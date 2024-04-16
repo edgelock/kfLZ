@@ -7,7 +7,7 @@ param tenantid string = '5aa0bc1f-6fd3-47dd-bd49-29fd2b62b56a'
 param tagValues object = {
   Company: 'NSM UK'
   Department: 'Infrastructure'
-  Environment: '${environment}'
+  Environment: environment
   Role: 'Management'
   CreationDate: dateTime
 

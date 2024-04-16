@@ -6,7 +6,7 @@ param dateTime string = utcNow('d')
 param tagValues object = {
   Company: 'NSM UK'
   Department: 'Infrastructure'
-  Environment: '${environment}'
+  Environment: environment
   Role: 'Management'
   CreationDate: dateTime
 }
