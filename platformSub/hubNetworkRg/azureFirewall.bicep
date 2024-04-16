@@ -30,14 +30,15 @@ resource firewallPublicIp 'Microsoft.Network/publicIPAddresses@2021-05-01' = {
 
 output id string = firewallPublicIp.id
 
-param azFirewallPolicyID string = '/subscriptions/d8b855c8-2412-4cab-9ce3-927c4dab5523/resourceGroups/prdcaearg01/providers/Microsoft.Network/firewallPolicies/prdcaeafw-policy1'
-
 resource AzureFirewall 'Microsoft.Network/azureFirewalls@2022-09-01' = {
   name: 'afw-${prefix}-${environment}-${region}-001'
   location: location
   tags: tagValues
   zones: availabilityZones
   properties: {
+    firewallPolicy: {
+      id: afwPolicy.id
+    }
     sku: {
       name: 'AZFW_VNet'
        tier: 'Standard'
