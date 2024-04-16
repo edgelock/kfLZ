@@ -7,12 +7,12 @@ param tagValues object = {
   Company: 'NSM UK'
   Department: 'Infrastructure'
   Environment: '${environment}'
-  Role: 'Network'
+  Role: 'Management'
   CreationDate: dateTime
 }
 
 resource rsv 'Microsoft.RecoveryServices/vaults@2024-01-01' = {
-  name: 'rsv-${prefix}-${environment}-${region}-app-001'
+  name: 'rsv-${prefix}-${environment}-${region}-001'
   location: location
   sku: {
     name: 'Standard'

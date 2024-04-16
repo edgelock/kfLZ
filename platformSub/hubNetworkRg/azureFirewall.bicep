@@ -6,17 +6,18 @@ param dateTime string = utcNow('d')
 param tagValues object = {
   Company: 'NSM UK'
   Department: 'Infrastructure'
-  Environment: '${environment}'
+  Environment: environment
   Role: 'Network'
   CreationDate: dateTime
 
 }
-
+param availabilityZones array = [1,2]
 param virtualNetworkId string = '/subscriptions/19022fa5-e4d8-4433-bd3c-503455903ca2/resourceGroups/rg-nsmuk-hub-network-uksouth-001/providers/Microsoft.Network/virtualNetworks/vnet-nsmuk-hub-uksouth-001'
 param subnetName string = 'AzureFirewallSubnet'
 
 resource firewallPublicIp 'Microsoft.Network/publicIPAddresses@2021-05-01' = {
   name: 'pip-afw-${prefix}-${environment}-${region}-001'
+  zones: availabilityZones
   location: location
   tags: tagValues
   sku: {
@@ -35,6 +36,7 @@ resource AzureFirewall 'Microsoft.Network/azureFirewalls@2022-09-01' = {
   name: 'afw-${prefix}-${environment}-${region}-001'
   location: location
   tags: tagValues
+  zones: availabilityZones
   properties: {
     sku: {
       name: 'AZFW_VNet'
@@ -53,6 +55,18 @@ resource AzureFirewall 'Microsoft.Network/azureFirewalls@2022-09-01' = {
         }
       }
     ]
+  }
+}
+
+resource afwPolicy 'Microsoft.Network/firewallPolicies@2023-09-01' = {
+  name: 'afwp-afw-${prefix}-${environment}-${region}-001'
+  location: location
+  tags: tagValues
+  properties: {
+
+    sku: {
+       tier: 'Standard'
+    }
   }
 }
 
